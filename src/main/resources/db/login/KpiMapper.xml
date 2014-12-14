@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper  
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="report.kpi">  
+<resultMap type="kpiDomain" id="kpiDomain">
+<result property="id" column="id" />
+<result property="name" column="name" />
+<result property="kpi" column="kpi" javaType="java.lang.String" jdbcType="VARCHAR"/>
+</resultMap>
+
+ <select id="selectAllKpi" resultMap="kpiDomain" >
+	SELECT * FROM company_kpi;
+ </select>
+ <select id="selectOne" resultMap="kpiDomain" parameterType="kpiDomain" >
+	SELECT * FROM company_kpi r  WHERE r.name = #{name} AND r.id=#{id} ;
+ </select>
+<insert id="insertOne" parameterType="kpiDomain" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO `company_kpi`
+		(
+		`kpi`,
+		`name`)
+		VALUES
+		(
+		#{kpi},
+		#{name});
+</insert>
+ 
+</mapper> 
+
+
+
+

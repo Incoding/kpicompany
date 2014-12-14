@@ -1,0 +1,8 @@
+/target/
+/bin/
+/webapps/
+.settings/
+
+.classpath
+.project
+.springBeans
