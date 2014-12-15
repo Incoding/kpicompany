@@ -17,22 +17,17 @@
 	http://code.alibabatech.com/schema/dubbo
 	http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
 	default-lazy-init="true">
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close" p:driverClassName="${service.jdbc.driver}"
-		p:url="${service.jdbc.url}"
-		p:username="${service.jdbc.username}" p:password="${service.jdbc.password}" />
-	<bean id="txManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:/db/mybatis-config.xml" />
-	</bean>
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg name="sqlSessionFactory" ref="sessionFactory" />
-	</bean>
-	<import resource="transaction-aop.xml"/>
-<!-- 	<import resource="transaction-annotation.xml"/> -->
-<!-- 	<import resource="transaction-template.xml"/> -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+	    <tx:attributes>
+	        <tx:method name="insert*" propagation="REQUIRED" isolation="READ_COMMITTED" />
+	        <tx:method name="update*" propagation="REQUIRED" isolation="READ_COMMITTED" />
+	        <tx:method name="delete*" propagation="REQUIRED" isolation="READ_COMMITTED" />
+<!-- 	        <tx:method name="*" propagation="REQUIRED" isolation="READ_COMMITTED" /> -->
+	    </tx:attributes>
+	</tx:advice>
+	<aop:config>
+<!-- 	com.kpicompany.report.serviceImp -->
+	    <aop:pointcut id="serviceMethod" expression="execution(* com..kpicompany.report.serviceImp..*.*(..))"/>
+	    <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
+	</aop:config>
 </beans>

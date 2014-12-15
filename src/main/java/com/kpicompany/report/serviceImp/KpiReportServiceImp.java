@@ -19,7 +19,7 @@ public class KpiReportServiceImp implements KpiService {
 		return allKpi;
 	}
 	@Override
-	public int addKpi(KpiDomain kpiDomain){
+	public int insertKpi(KpiDomain kpiDomain){
 		int allKpi = kpiDao.insertKpi(kpiDomain);
 		return allKpi;
 	}

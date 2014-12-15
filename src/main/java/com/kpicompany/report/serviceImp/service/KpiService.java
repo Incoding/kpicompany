@@ -10,6 +10,6 @@ public interface KpiService {
 
 	KpiDomain selectOneKpi(KpiDomain kpiDomain);
 
-	int addKpi(KpiDomain kpiDomain);
+	int insertKpi(KpiDomain kpiDomain);
 
 }

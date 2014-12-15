@@ -13,7 +13,7 @@ import com.kpicompany.report.domain.KpiDomain;
 import com.kpicompany.report.serviceImp.service.KpiService;
 
 @Service
-public class KpiReportServiceAnnotationImp implements KpiService {
+public class KpiReportServiceAopImp implements KpiService {
 	@Autowired
 	private KpiDao kpiDao;
 	@Override
@@ -22,7 +22,6 @@ public class KpiReportServiceAnnotationImp implements KpiService {
 		return allKpi;
 	}
 	@Override
-	@Transactional(isolation=Isolation.READ_COMMITTED,propagation=Propagation.REQUIRED)
 	public int insertKpi(KpiDomain kpiDomain){
 		int allKpi = kpiDao.insertKpi(kpiDomain);
 		System.out.println(allKpi);

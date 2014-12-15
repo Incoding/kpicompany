@@ -13,9 +13,9 @@ import com.kpicompany.report.serviceImp.service.KpiService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath*:applicationContext.xml")
-public class KpiDaoImpAnnotationTest {
+public class KpiDaoImpAopTest {
 	@Autowired
-	@Qualifier("kpiReportServiceAnnotationImp")
+	@Qualifier("kpiReportServiceAopImp")
 	private KpiService kpi;
 	/**
 	 * 验证注解事务是否生效
