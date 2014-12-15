@@ -5,5 +5,13 @@ CREATE TABLE `company_kpi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8;
 INSERT INTO company_kpi (name,kpi) values('李四','2.9');
-INSERT INTO company_kpi (name,kpi) values('王五','2.9');
-INSERT INTO company_kpi (name,kpi) values('赵二','2.9');
+INSERT INTO company_kpi (name,kpi) values('王五','3.0');
+INSERT INTO company_kpi (name,kpi) values('赵二','3.2');
+
+
+-- for test transaction
+select @@autocommit; 
+select @@tx_isolation;
+ 
+set autocommit=0;
+set tx_isolation='read-uncommitted';
