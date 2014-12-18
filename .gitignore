@@ -1,8 +1,12 @@
-/target/
-/bin/
-/webapps/
 .settings/
-
 .classpath
 .project
+
+/webapps/
+/log/
+
+
+/target/
 .springBeans
+rebel.xml
+/bin/
