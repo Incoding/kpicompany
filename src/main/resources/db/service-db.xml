@@ -32,7 +32,7 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sessionFactory" />
 	</bean>
-	<import resource="transaction-aop.xml"/>
+<!-- 	<import resource="transaction-aop.xml"/> -->
 <!-- 	<import resource="transaction-annotation.xml"/> -->
-<!-- 	<import resource="transaction-template.xml"/> -->
+	<import resource="transaction-template.xml"/>
 </beans>

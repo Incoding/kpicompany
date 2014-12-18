@@ -22,6 +22,7 @@ public class KpiDaoImpAopTest {
 	 */
 	@Test
 	public void testTransaction() {
+		
 		final KpiDomain kpiDomain = new KpiDomain();
 		kpiDomain.setName("nihao");
 		int insertKpi = 0;

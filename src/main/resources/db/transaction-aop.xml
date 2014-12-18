@@ -25,6 +25,7 @@
 <!-- 	        <tx:method name="*" propagation="REQUIRED" isolation="READ_COMMITTED" /> -->
 	    </tx:attributes>
 	</tx:advice>
+	
 	<aop:config>
 <!-- 	com.kpicompany.report.serviceImp -->
 	    <aop:pointcut id="serviceMethod" expression="execution(* com..kpicompany.report.serviceImp..*.*(..))"/>
