@@ -9,4 +9,6 @@
 /target/
 .springBeans
 rebel.xml
+rebel-remote.xml
 /bin/
+/target

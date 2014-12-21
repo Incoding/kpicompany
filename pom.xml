@@ -23,6 +23,27 @@
 		<plugin.compiler.version>3.2</plugin.compiler.version>
 		<plugin.war.version>2.5</plugin.war.version>
 	</properties>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<filters>
+					<filter>${basedir}/src/main/resources/config/filter/dev.properties</filter>
+				</filters>
+			</build>
+		</profile>
+		<profile>
+			<id>product</id>
+			<build>
+				<filters>
+					<filter>${basedir}/src/main/resources/config/filter/product.properties</filter>
+				</filters>
+			</build>
+		</profile>
+	</profiles>
 	<build>
 		<resources>
 			<resource>
@@ -30,10 +51,15 @@
 				<includes>
 					<include>**/*.*</include>
 				</includes>
+				<excludes>
+					<exclude>filter/</exclude>
+				</excludes>
+				<filtering>true</filtering>
 				<targetPath>${basedir}/webapps/ROOT/WEB-INF/classes/</targetPath>
 			</resource>
 			<resource>
 				<directory>src/main/webapp</directory>
+				<filtering>true</filtering>
 				<targetPath>${basedir}/webapps/ROOT/</targetPath>
 			</resource>
 		</resources>
