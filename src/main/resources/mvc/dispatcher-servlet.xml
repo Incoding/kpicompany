@@ -34,8 +34,9 @@
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	<import resource="classpath:mvc/viewResolver-freemarker.xml"/>
 	<mvc:default-servlet-handler/>
+	<import resource="classpath:mvc/viewResolver-negotiation.xml"/>
+<!-- 	<import resource="classpath:mvc/viewResolver-freemarker.xml"/> -->
 <!-- 	<import resource="classpath:mvc/viewResolver-velocity.xml"/> -->
 <!-- 	<import resource="classpath:mvc/viewResolver-jsp.xml"/> -->
 <!-- 	<import resource="classpath:mvc/viewResolver-jstl.xml"/> -->
