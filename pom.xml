@@ -5,7 +5,7 @@
   <groupId>com.kpicompany</groupId>
   <artifactId>report</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <name>service</name>
 
 	<properties>
@@ -21,7 +21,7 @@
 		<junit.version>4.11</junit.version>
 		<plugin.clean.version>2.6.1</plugin.clean.version>
 		<plugin.compiler.version>3.2</plugin.compiler.version>
-		<plugin.war.version>2.5</plugin.war.version>
+		<plugin.war.version>2.4</plugin.war.version>
 	</properties>
 	<profiles>
 		<profile>
@@ -53,6 +53,7 @@
 				</includes>
 				<excludes>
 					<exclude>filter/</exclude>
+					<exclude>${basedir}/target/</exclude>
 				</excludes>
 				<filtering>true</filtering>
 				<targetPath>${basedir}/webapps/ROOT/WEB-INF/classes/</targetPath>
@@ -97,6 +98,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${plugin.war.version}</version>
 				<configuration>
+					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
 					<webResources>
 						<resource>
 							<filtering>false</filtering>
@@ -121,9 +123,10 @@
 						WEB-INF/lib/commons-logging-*.jar,
 						%regex[WEB-INF/lib/log4j-(?!over-slf4j).*.jar]
 					</packagingExcludes>
-					<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+<!-- 					<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml> -->
 					<webappDirectory>${replacer.outputBasedir}/${replacer.outputDir}</webappDirectory>
-					<warSourceDirectory>${replacer.outputBasedir}/${replacer.outputDir}</warSourceDirectory>
+					<warSourceExcludes>${basedir}/target/</warSourceExcludes>
+<!-- 					<warSourceDirectory>${replacer.outputBasedir}/${replacer.outputDir}</warSourceDirectory> -->
 				</configuration>
 			</plugin>
 <!-- 			注意 ,不能与m2e一起使用,不兼容 -->

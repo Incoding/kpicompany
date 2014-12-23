@@ -8,7 +8,7 @@
 
 /target/
 .springBeans
-rebel.xml
-rebel-remote.xml
+src/main/resources/rebel.xml
+src/main/resources/rebel-remote.xml
 /bin/
 /target
