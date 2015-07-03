@@ -40,4 +40,7 @@
 <!-- 	<import resource="classpath:mvc/viewResolver-velocity.xml"/> -->
 <!-- 	<import resource="classpath:mvc/viewResolver-jsp.xml"/> -->
 <!-- 	<import resource="classpath:mvc/viewResolver-jstl.xml"/> -->
+
+<!-- 	<import resource="classpath:mvc/viewResolver-multipart.xml"/> -->
+
 </beans>
