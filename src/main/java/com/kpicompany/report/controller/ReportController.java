@@ -15,9 +15,9 @@ import com.kpicompany.report.vo.KpiDomainVo;
 
 @Controller
 public class ReportController {
-    @Autowired
-    @Qualifier("kpiReportServiceImp")
-    private KpiService kpiService;
+//    @Autowired
+//    @Qualifier("kpiReportServiceImp")
+//    private KpiService kpiService;
 
     @RequestMapping("velocity")
     public String reportVelocity(HttpServletRequest request) {

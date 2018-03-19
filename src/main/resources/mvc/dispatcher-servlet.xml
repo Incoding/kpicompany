@@ -9,22 +9,25 @@
 			http://www.springframework.org/schema/mvc
 			http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
 	default-lazy-init="true">
-	<bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
-	<bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+	<import resource="classpath:mvc/convert-date.xml"/>
+
+	<import resource="classpath:mvc/messageconverter-string.xml"/>
+	<import resource="classpath:mvc/messageconverter-fastjson.xml"/>
+	<!--<import resource="classpath:mvc/messageconverter-jackson.xml"/>-->
+
+
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="messageConverters">
 			<list>
-				<bean
-					class="org.springframework.http.converter.StringHttpMessageConverter"
-					p:writeAcceptCharset="false">
-					<property name="supportedMediaTypes">
-						<list>
-							<value>text/html;charset=UTF-8</value>
-						</list>
-					</property>
-				</bean>
+				<ref bean="stringHttpMessageConverter"/>
+				<ref bean="jsonHttpMessageConverter"/>
 			</list>
+		</property>
+		<property name="webBindingInitializer">
+			<bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+				<property name="conversionService" ref="formattingConversionServiceFactoryBean"/>
+			</bean>
 		</property>
 	</bean>
 	<!-- <mvc:annotation-driven /> -->

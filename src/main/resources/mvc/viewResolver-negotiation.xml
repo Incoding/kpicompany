@@ -9,10 +9,12 @@
 			http://www.springframework.org/schema/mvc
 			http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
 	default-lazy-init="true">
+
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 			<property name="order" value="1" />
 			<property name="favorPathExtension" value="true" />
-			<property name="ignoreAcceptHeader" value="true" />
+			<!-- 注意请求是设置的 header 名字叫: Accept -->
+			<property name="ignoreAcceptHeader" value="false" />
 			<property name="favorParameter" value="false" />
 			<property name="mediaTypes">
 				<map>
@@ -43,7 +45,7 @@
 			
 		</bean>
 		
-		<!-- If no extension matched, use JSP view -->
+		<!-- 如果只想处理json 或者xml 则不需要放下面解析jsp的 If no extension matched, use JSP view   -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="order" value="2" />
