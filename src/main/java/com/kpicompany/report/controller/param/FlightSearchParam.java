@@ -1,5 +1,8 @@
 package com.kpicompany.report.controller.param;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -13,6 +16,11 @@ import java.util.Date;
  */
 public class FlightSearchParam {
     private String name;
+    /**
+     * 如果是fastjson  则配置fastjson的注解,  注意 format 是用于输出的
+     * 如果是jackson   则配置jackson注解
+     */
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date date;
 
     public String getName() {
