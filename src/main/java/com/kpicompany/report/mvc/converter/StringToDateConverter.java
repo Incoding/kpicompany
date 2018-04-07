@@ -1,4 +1,4 @@
-package com.kpicompany.report.mvc;
+package com.kpicompany.report.mvc.converter;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;

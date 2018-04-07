@@ -9,11 +9,16 @@
 			http://www.springframework.org/schema/mvc
 			http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
 	default-lazy-init="true">
+	<!-- converter -->
 	<import resource="classpath:mvc/convert-date.xml"/>
 
+	<!-- messageconverter -->
 	<import resource="classpath:mvc/messageconverter-string.xml"/>
 	<import resource="classpath:mvc/messageconverter-fastjson.xml"/>
 	<!--<import resource="classpath:mvc/messageconverter-jackson.xml"/>-->
+
+	<!-- exceptionresolver -->
+	<import resource="classpath:mvc/exceptionresolver-self.xml"/>
 
 
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
@@ -38,6 +43,9 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 <!-- 	<mvc:default-servlet-handler/> -->
+
+
+	<!--viewresolver -->
 	<import resource="classpath:mvc/viewResolver-negotiation.xml"/>
 <!-- 	<import resource="classpath:mvc/viewResolver-freemarker.xml"/> -->
 <!-- 	<import resource="classpath:mvc/viewResolver-velocity.xml"/> -->
