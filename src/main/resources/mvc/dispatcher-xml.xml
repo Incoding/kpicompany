@@ -1,0 +1,54 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-3.2.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
+	default-lazy-init="true">
+
+
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="stringHttpMessageConverter"/>
+				<ref bean="jsonHttpMessageConverter"/>
+			</list>
+		</property>
+		<property name="webBindingInitializer">
+			<bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+				<property name="conversionService" ref="formattingConversionServiceFactoryBean"/>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- converter -->
+	<import resource="classpath:mvc/xml/convert-date.xml"/>
+
+	<!-- messageconverter -->
+	<import resource="classpath:mvc/xml/messageconverter-string.xml"/>
+	<import resource="classpath:mvc/xml/messageconverter-fastjson.xml"/>
+	<!--<import resource="classpath:mvc/messageconverter-jackson.xml"/>-->
+
+	<!-- exceptionresolver -->
+	<import resource="classpath:mvc/xml/exceptionresolver-self.xml"/>
+
+	<!--viewresolver -->
+	<import resource="classpath:mvc/xml/viewResolver-negotiation.xml"/>
+	<import resource="classpath:mvc/xml/viewResolver-freemarker.xml"/>
+	<import resource="classpath:mvc/xml/viewResolver-velocity.xml"/>
+	<import resource="classpath:mvc/xml/viewResolver-jsp.xml"/>
+	<!-- 	<import resource="classpath:mvc/viewResolver-jstl.xml"/> -->
+
+	<!-- 	<import resource="classpath:mvc/viewResolver-multipart.xml"/> -->
+
+
+	<!-- static resource -->
+	<import resource="static-servlet-default.xml"/>
+	<!--<import resource="static-resource-mapping.xml"/>-->
+
+</beans>
