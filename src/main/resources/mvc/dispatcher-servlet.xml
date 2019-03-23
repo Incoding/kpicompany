@@ -21,9 +21,9 @@
 
 
 	<!-- spring mvc xml config-->
-	<import resource="dispatcher-xml.xml"/>
+	<!--<import resource="dispatcher-xml.xml"/>-->
 
-	<!--<import resource="dispatcher-annotation.xml"/>-->
+	<import resource="dispatcher-annotation.xml"/>
 
 
 

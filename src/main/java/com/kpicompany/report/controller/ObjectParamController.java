@@ -34,6 +34,7 @@ public class ObjectParamController {
 
     /**
      * 俩个参数中 如果有相同的参数名字,是会都设置的
+     * http://localhost:8080/param/multi?second=secondName&first=firstName&name=nihao2
      * @param flightSearchMultiFirst
      * @param flightSearchMultiSecond
      * @return

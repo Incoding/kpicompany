@@ -9,21 +9,14 @@
 			http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
        default-lazy-init="true">
 
-    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+                <!-- 解决json 输出 Date问题,但是无法解决输入问题-->
+                <property name="objectMapper" ref="customerObjectMapper"></property>
+            </bean>
+        </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-        <property name="favorPathExtension" value="true"/>
-        <property name="favorParameter" value="false"/>
-        <!-- 注意请求是设置的 header 名字叫: Accept -->
-        <property name="ignoreAcceptHeader" value="true"/>
-        <property name="useJaf" value="false"/>
-        <property name="defaultContentType" value="application/json"/>
-        <property name="mediaTypes">
-            <map>
-                <entry key="json" value="application/json"/>
-                <entry key="xml" value="application/xml"/>
-            </map>
-        </property>
-    </bean>
 </beans>

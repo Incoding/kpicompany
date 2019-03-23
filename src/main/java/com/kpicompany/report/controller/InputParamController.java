@@ -29,7 +29,7 @@ public class InputParamController {
     }
 
     /**
-     *
+     * 没加 requestBody   则  请求是kv   可以放在get 参数里也可以放在post里
      */
     @RequestMapping("/fly_viewresolver_jackson")
     @ResponseBody
