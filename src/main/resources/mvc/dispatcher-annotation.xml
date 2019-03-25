@@ -13,7 +13,6 @@
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-                <!-- 解决json 输出 Date问题,但是无法解决输入问题-->
                 <property name="objectMapper" ref="customerObjectMapper"></property>
             </bean>
         </mvc:message-converters>
